@@ -5,10 +5,12 @@ import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import doleaa.sandbox.rest.resources.HelloWorldResource;
+import doleaa.sandbox.rest.resources.MathsResource;
 
 public class App extends Application<Configuration> {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
@@ -18,12 +20,15 @@ public class App extends Application<Configuration> {
     }
 
     @Override
-    public void run(Configuration c, Environment e) throws Exception {
+    @SneakyThrows
+    public void run(Configuration c, Environment e) {
         LOGGER.info("Registering REST resources");
         e.jersey().register(new HelloWorldResource());
+        e.jersey().register(new MathsResource());
     }
 
-    public static void main(String[] args) throws Exception {
+    @SneakyThrows
+    public static void main(String[] args) {
         new App().run(args);
     }
 }
