@@ -19,6 +19,7 @@
     <guice.version>4.1.0</guice.version>
     <guava.version>21.0</guava.version>
     <lombok.version>1.18.12</lombok.version>
+    <mongodb.version>3.4.0</mongodb.version>
   </properties>
 
   <dependencies>
@@ -53,6 +54,11 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>${lombok.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>${mongodb.version}</version>
     </dependency>
 
 
