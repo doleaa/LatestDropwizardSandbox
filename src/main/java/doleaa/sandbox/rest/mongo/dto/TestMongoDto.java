@@ -1,10 +1,10 @@
 package doleaa.sandbox.rest.mongo.dto;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import lombok.*;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Builder
@@ -15,28 +15,16 @@ import org.bson.types.ObjectId;
 public class TestMongoDto {
     private ObjectId documentId;
     private String testDocumentContent;
+    private List<String> testOwnerNames;
 
     TestMongoDto() {}
 
-    public DBObject toDBObject() {
-        BasicDBObject returnable = new BasicDBObject("content", this.testDocumentContent);
-
-        if (this.documentId != null) {
-            return returnable.append("_id", this.documentId);
-        }
-
-        return returnable;
-    }
-    public static TestMongoDto fromDBObject(DBObject givenObject) {
-        return TestMongoDto
-                .builder()
-                .documentId((ObjectId) givenObject.get("_id"))
-                .testDocumentContent((String) givenObject.get("content"))
-                .build();
-    }
-
     public Document toDocument() {
-        Document returnable = new Document("content", this.testDocumentContent);
+        Document returnable = new Document();
+
+        returnable
+                .append("content", this.testDocumentContent)
+                .append("ownerNames", this.testOwnerNames);
 
         if (this.documentId != null) {
             return returnable.append("_id", this.documentId);
@@ -49,6 +37,8 @@ public class TestMongoDto {
                 .builder()
                 .documentId(givenDocument.getObjectId("_id"))
                 .testDocumentContent(givenDocument.getString("content"))
+                //Will this unchecked assignment work? Hm...
+//                .testOwnerNames(givenDocument.get("ownerNames", List.class))
                 .build();
     }
 }
