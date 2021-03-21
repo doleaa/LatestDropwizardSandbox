@@ -19,7 +19,11 @@
     <guice.version>4.1.0</guice.version>
     <guava.version>21.0</guava.version>
     <lombok.version>1.18.12</lombok.version>
-    <mongodb.version>3.4.0</mongodb.version>
+    <mongodb.version>3.12.7</mongodb.version>
+    <mongodb-driver.version>3.12.7</mongodb-driver.version>
+    <mongodb-driver-core.version>4.1.0</mongodb-driver-core.version>
+    <bson.version>4.1.0</bson.version>
+    <morphia.version>1.5.3</morphia.version>
   </properties>
 
   <dependencies>
@@ -59,6 +63,21 @@
       <groupId>org.mongodb</groupId>
       <artifactId>mongo-java-driver</artifactId>
       <version>${mongodb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver</artifactId>
+      <version>${mongodb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver-core</artifactId>
+      <version>${mongodb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>dev.morphia.morphia</groupId>
+      <artifactId>core</artifactId>
+      <version>${morphia.version}</version>
     </dependency>
 
 
